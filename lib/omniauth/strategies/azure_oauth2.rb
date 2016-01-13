@@ -13,7 +13,6 @@ module OmniAuth
       # AD resource identifier
       option :resource, '00000002-0000-0000-c000-000000000000'
       option :prompt, nil
-      option :admin_consent, nil
 
       # tenant_provider must return client_id, client_secret and optionally tenant_id
       args [:tenant_provider]
@@ -31,7 +30,6 @@ module OmniAuth
           provider.respond_to?(:tenant_id) ? provider.tenant_id : 'common'
 
         options.authorize_params.prompt = provider.prompt if provider.respond_to?(:prompt) && provider.prompt
-        options.authorize_params.admin_consent = provider.admin_consent if provider.respond_to?(:admin_consent) && provider.admin_consent
         options.authorize_params.domain_hint = provider.domain_hint if provider.respond_to?(:domain_hint) && provider.domain_hint
         options.client_options.authorize_url = "#{BASE_AZURE_URL}/#{options.tenant_id}/oauth2/authorize"
         options.client_options.token_url = "#{BASE_AZURE_URL}/#{options.tenant_id}/oauth2/token"
