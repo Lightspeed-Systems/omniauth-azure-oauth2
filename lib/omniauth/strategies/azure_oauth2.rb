@@ -30,7 +30,7 @@ module OmniAuth
           provider.respond_to?(:tenant_id) ? provider.tenant_id : 'common'
 
         options.authorize_params.prompt = provider.prompt if provider.respond_to?(:prompt) && provider.prompt
-
+        options.authorize_params.admin_consent = provider.admin_consent if provider.respond_to?(:admin_consent) && provider.admin_consent
         options.authorize_params.domain_hint = provider.domain_hint if provider.respond_to?(:domain_hint) && provider.domain_hint
         options.client_options.authorize_url = "#{BASE_AZURE_URL}/#{options.tenant_id}/oauth2/authorize"
         options.client_options.token_url = "#{BASE_AZURE_URL}/#{options.tenant_id}/oauth2/token"
