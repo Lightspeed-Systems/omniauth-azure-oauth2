@@ -13,6 +13,7 @@ module OmniAuth
       # AD resource identifier
       option :resource, '00000002-0000-0000-c000-000000000000'
       option :prompt, nil
+      option :admin_consent, nil
 
       # tenant_provider must return client_id, client_secret and optionally tenant_id
       args [:tenant_provider]
